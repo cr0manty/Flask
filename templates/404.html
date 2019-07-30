@@ -5,10 +5,9 @@
 {% endblock %}
 
 {% block content_title %}
-<div class="container"> <h1>Страница не найдена (404)</h1></div>
 {% endblock %}
 
 {% block content %}
-<div class="container"><h2> Упс, данная страница еще не была создана</h2></div>
+<img src="{{ url_for('static', filename='image/404.png') }}" class="center-img">
 {% endblock %}
 

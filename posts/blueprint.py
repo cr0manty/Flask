@@ -28,6 +28,19 @@ def create_post():
     return render_template('posts/create_post.html', form=form)
 
 
+@posts.route('/delete', methods=['POST', 'GET'])
+@login_required
+def delete(slug):
+    post = Post.query.filter(Post.slug == slug).first_or_404()
+
+    if request.method == 'GET':
+        db.session.delete(post)
+        db.session.commit()
+        return redirect(url_for('posts.index'))
+
+    return redirect(url_for('posts.show_post', slug=post.slug))
+
+
 @posts.route('/<slug>/edit', methods=['POST', 'GET'])
 @login_required
 def edit(slug):
