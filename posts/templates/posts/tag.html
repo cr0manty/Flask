@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    {{ tag.name }} посты
+{% endblock %}
+
+{% block content_title %}
+    Все посты с тегом : '{{ tag.name }}'
+{% endblock %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="posts">
+            <a href=" {{ url_for('posts.show_post', slug=post.slug) }} ">
+                {{post.title}}
+            </a>
+        </div>
+        {% endfor %}
+{% endblock %}
