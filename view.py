@@ -4,7 +4,8 @@ from flask import render_template
 
 @app.route('/')
 def index():
-    return render_template('index.html', n='')
+    return render_template('index.html')
+
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -13,9 +14,5 @@ def page_not_found(e):
 
 @app.route('/links')
 def links():
-    return render_template('index.html')
+    return render_template('links.html')
 
-
-@app.route('/about')
-def about():
-    return render_template('index.html')

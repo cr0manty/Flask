@@ -9,7 +9,7 @@
     <meta name="keywords" content="Мой сайт, первый сайт, Cr0manty">
     <meta name="description" content="Сайт созданный мной для теста">
     <link rel="shortcut icon"
-          href="https://raw.githubusercontent.com/cr0manty/Finder-Ricardo/master/Explorer/Finder.ico"/>
+          href="/static/image/logo.ico">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
@@ -27,9 +27,9 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <form class="form-inline my-2 my-lg-0" method="GET">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="q"
-                           value="{{request.args.get('q', '')}}">
+                <form class="form-inline my-2 my-lg-0" method="GET" action="{{ url_for('posts.index')}}">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="p"
+                           value="{{request.args.get('p', '')}}">
                 </form>
 
                 <li class="nav-item ">
@@ -41,9 +41,6 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{url_for('links')}}">Ссылки</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{{url_for('about')}}" tabindex="-1" aria="true">Про меня</a>
                 </li>
             </ul>
             <ul class="navbar-nav">

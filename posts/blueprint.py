@@ -58,13 +58,13 @@ def edit(slug):
 
 @posts.route('/')
 def index():
-    q = request.args.get('q')
+    p = request.args.get('p')
 
     page = request.args.get('page')
     page = int(page) if page and page.isdigit() else 1
 
-    if q:
-        all_posts = Post.query.filter(Post.title.contains(q) | Post.body.contains(q)).all()
+    if p:
+        all_posts = Post.query.filter(Post.title.contains(p) | Post.body.contains(p))
     else:
         all_posts = Post.query.order_by(Post.created.desc())
 
