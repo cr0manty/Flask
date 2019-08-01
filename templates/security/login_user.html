@@ -19,7 +19,7 @@
         {{ render_field_with_errors(login_user_form.password, class='form-control') }}
         {{ render_field_with_errors(login_user_form.remember, class='form-check-label') }}
         {{ render_field(login_user_form.next) }}
-        {{ render_field(login_user_form.submit, class='btn btn-success') }}
+        {{ render_field(login_user_form.submit, class='btn btn-danger') }}
     </form>
     {% include "security/_menu.html" %}
 </div>

@@ -1,0 +1,24 @@
+.center-img {
+  display: block;
+  margin: 0 auto;
+}
+
+body {
+    background: #222528;
+    color: #fff;
+}
+
+.page-item.active .page-link {
+    background-color: #cc1d10;
+    border-color: #cc1d10;
+}
+
+.page-link {
+    color: #cc1d10;
+}
+
+.alert-info {
+    color: #ffffff;
+    background-color: #ff000070;
+    border-color: #ff000026;
+}
