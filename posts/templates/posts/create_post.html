@@ -5,11 +5,11 @@
 {% endblock %}
 
 {% block content_title %}
-Новый пост
+<div class="container col-md-6">Новый пост</div>
 {% endblock %}
 
 {% block content %}
-<div class="col-md-6">
+<div class="container col-md-6">
     <form action=" {{ url_for('posts.create_post') }} " method="POST">
         {% for field in form %}
         <div class="form-group">

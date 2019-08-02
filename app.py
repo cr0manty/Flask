@@ -4,7 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate, MigrateCommand
 from flask_script import Manager
 from flask_security import SQLAlchemyUserDatastore, Security
-from flask_admin import Admin
 
 app = Flask(__name__)
 app.config.from_object(Configuration)
@@ -16,11 +15,7 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
 from models import *
-from admin import *
-
-admin = Admin(app, 'Cr0manty', url='/', index_view=HomeAdminView(name='Home'))
-admin.add_view(PostAdminView(Post, db.session))
-admin.add_view(TagAdminView(Tag, db.session))
+from admin_panel import *
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)

@@ -18,7 +18,21 @@ body {
 }
 
 .alert-info {
-    color: #ffffff;
-    background-color: #ff000070;
-    border-color: #ff000026;
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+a {
+    color: #ff0000;
+}
+
+a:-webkit-any-link {
+    color: #ff0000;
 }
