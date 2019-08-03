@@ -18,7 +18,7 @@ manager = Manager(app)
 manager.add_command('db', MigrateCommand)
 
 from admin_panel import *
-logined_user = User()
+current_user_info = User()
 
 user_datastore = SQLAlchemyUserDatastore(db, User, Role)
 security = Security(app, user_datastore)

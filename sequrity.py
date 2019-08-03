@@ -29,12 +29,6 @@ class Registration(FlaskForm):
             raise ValidationError('Пользователь с данным email уже зарегестрирован.')
 
 
-class Login(FlaskForm):
-    login = StringField('Логин')
-    password = PasswordField('Пароль')
-    submit = SubmitField('Войти')
-
-
 class AdminPanel:
     def is_accessible(self):
         return current_user.has_role('admin')

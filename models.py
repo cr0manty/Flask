@@ -5,6 +5,7 @@ import re
 from flask_security import UserMixin, RoleMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 
+
 def slugify(string):
     pattern = r'[^\w+]'
     return ''.join(OrderedDict.fromkeys(re.sub(pattern, '-', string)))
@@ -65,7 +66,7 @@ class User(db.Model, UserMixin):
     last_name = db.Column(db.String(32))
     email = db.Column(db.String(64), unique=True)
     name = db.Column(db.String(32), unique=True)
-    password = db.Column(db.String(64))
+    password = db.Column(db.String(255))
     slug = db.Column(db.String(32))
     active = db.Column(db.Boolean())
     roles = db.relationship('Role', secondary=user_roles, backref=db.backref('users', lazy='dynamic'))
@@ -73,16 +74,14 @@ class User(db.Model, UserMixin):
     def __init__(self, *args, **kwargs):
         super(User, self).__init__(*args, **kwargs)
         self.generate_slug()
+        self.active = True
 
     def generate_slug(self):
         if self.name:
-            self.slug = slugify(self.name)
+            self.slакug = slugify(self.name)
 
     def set_password(self, password):
-        self.password = generate_password_hash(password)
-
-    def check_password(self, _password):
-        return check_password_hash(self.password, _password)
+        self.password = password
 
 
 class Role(db.Model, RoleMixin):
