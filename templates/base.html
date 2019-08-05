@@ -46,28 +46,27 @@
         <ul class="navbar-nav">
             {% if current_user.is_authenticated and current_user.has_role('admin') %}
             <li class="nav-item">
-                <a class="nav-link" href="/admin">Админ</a>
+                <a class="nav-link" href="/admin">Админ панель</a>
             </li>
             {% endif %}
 
             {% if current_user.is_authenticated %}
             <li class="nav-item">
-                <a class="nav-link" href="{{url_for('show_user', slug=current_user.slug)}}">{{ current_user.name }}</a>
+                <a class="nav-link" href="{{url_for('show_user', username=current_user.name)}}">{{ current_user.name
+                    }}</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/logout">Выйти</a>
+                <a class="nav-link" href="{{url_for('logout')}}">Выйти</a>
             </li>
             {% else %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('user_reg') }}">Регистрация</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/login">Вход</a>
+                <a class="nav-link" href="{{url_for('login')}}">Вход</a>
             </li>
             {% endif %}
-
         </ul>
-
     </div>
 </nav>
 

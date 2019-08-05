@@ -36,3 +36,7 @@ a {
 a:-webkit-any-link {
     color: #ff0000;
 }
+
+.error-field {
+    color: #721c24;
+}

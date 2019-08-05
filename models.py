@@ -2,9 +2,8 @@ from app import db
 from datetime import datetime
 from collections import OrderedDict
 import re
-from flask_security import UserMixin, RoleMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from flask_security import UserMixin, RoleMixin
 
 def slugify(string):
     pattern = r'[^\w+]'
@@ -67,21 +66,22 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(64), unique=True)
     name = db.Column(db.String(32), unique=True)
     password = db.Column(db.String(255))
-    slug = db.Column(db.String(32))
     active = db.Column(db.Boolean())
     roles = db.relationship('Role', secondary=user_roles, backref=db.backref('users', lazy='dynamic'))
 
     def __init__(self, *args, **kwargs):
         super(User, self).__init__(*args, **kwargs)
-        self.generate_slug()
         self.active = True
 
     def generate_slug(self):
         if self.name:
-            self.slакug = slugify(self.name)
+            self.name = slugify(self.name)
 
     def set_password(self, password):
-        self.password = password
+        self.password = generate_password_hash(password)
+
+    def check_password(self, password):
+        return check_password_hash(self.password, password)
 
 
 class Role(db.Model, RoleMixin):

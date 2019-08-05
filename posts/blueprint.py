@@ -28,7 +28,7 @@ def create_post():
     return render_template('posts/create_post.html', form=form)
 
 
-@posts.route('/delete', methods=['POST', 'GET'])
+@posts.route('/<slug>/delete', methods=['POST', 'GET'])
 @login_required
 def delete(slug):
     post = Post.query.filter(Post.slug == slug).first_or_404()

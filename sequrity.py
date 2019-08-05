@@ -29,6 +29,12 @@ class Registration(FlaskForm):
             raise ValidationError('Пользователь с данным email уже зарегестрирован.')
 
 
+class Login(FlaskForm):
+    name = StringField('Логин', validators=[DataRequired()])
+    password = PasswordField('Пароль', validators=[DataRequired()])
+    submit = SubmitField('Войти')
+
+
 class AdminPanel:
     def is_accessible(self):
         return current_user.has_role('admin')
@@ -60,4 +66,8 @@ class TagAdminView(AdminPanel, BaseView):
 
 
 class UsersAdminView(AdminPanel, BaseView):
-    form_columns = ['email', 'name', 'password', 'roles']
+    form_columns = ('email', 'name', 'password', 'roles', 'active', 'first_name', 'last_name')
+    column_editable_list = ('first_name', 'last_name', 'email', 'name', 'roles', 'active')
+    form_edit_rules = ('first_name', 'last_name', 'email', 'name', 'roles', 'active')
+    form_create_rules = ('first_name', 'last_name', 'name', 'email', 'password', 'roles', 'active')
+
