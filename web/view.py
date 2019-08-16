@@ -1,13 +1,15 @@
-from app import app, db
+from web.app import app, db
 from flask import render_template, redirect, url_for, request
 from flask_security import login_required, current_user, logout_user, login_user
-from sequrity import Registration, User
-from sequrity import Login
+from web.sequrity import Registration, User
+from web.sequrity import Login
 from flask.testing import url_parse
+from web.location import make_map
 
 
 @app.route('/')
 def index():
+    make_map()
     return render_template('index.html',
                            username=(current_user.name if current_user.is_authenticated
                                      else None))
@@ -23,6 +25,11 @@ def links():
     return render_template('links.html')
 
 
+@app.route('/map')
+def map():
+    return render_template('map.html')
+
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = Login()
@@ -35,10 +42,10 @@ def login():
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')
         return url_for(next_page)
-    return render_template('login_user.html', form=form)
+    return render_template('security/login.html', form=form)
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/reg', methods=['GET', 'POST'])
 def user_reg():
     if current_user.is_authenticated:
         return redirect(url_for('index'))

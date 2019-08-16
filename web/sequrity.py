@@ -3,9 +3,9 @@ from flask_admin.contrib.sqla import ModelView
 from flask_security import current_user
 from flask_admin import AdminIndexView
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import ValidationError, DataRequired, Email, EqualTo
-from models import User
+from web.models import User
 
 
 class Registration(FlaskForm):
@@ -32,6 +32,7 @@ class Registration(FlaskForm):
 class Login(FlaskForm):
     name = StringField('Логин', validators=[DataRequired()])
     password = PasswordField('Пароль', validators=[DataRequired()])
+    save_me = BooleanField('Запомнить')
     submit = SubmitField('Войти')
 
 

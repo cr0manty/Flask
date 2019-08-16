@@ -1,6 +1,6 @@
-from app import app, db
-from models import *
-from sequrity import *
+from web.app import app
+from web.models import *
+from web.sequrity import *
 from flask_admin import Admin,  expose
 
 

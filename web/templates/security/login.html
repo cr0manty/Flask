@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Вход
+{% endblock %}
+
+{% block content_title %}
+<div class="container col-md-6">Логин</div>
+{% endblock %}
+
+{% block content %}
+<div class="container col-md-offset-3 col-md-6">
+
+    <form action="" method="POST" name="login_user_form">
+         <p>
+            {{ form.name.label }}<br>
+            {{ form.name(size=64, class='form-control') }}<br>
+            {% for error in form.name.errors %}
+            <a class="error-field">*{{ error }}</a>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=64, class='form-control') }}<br>
+            {% for error in form.password.errors %}
+            <a class="error-field">*{{ error }}</a>
+            {% endfor %}
+        </p>
+        <p>{{ form.submit(class='btn btn-danger') }}</p>
+    </form>
+</div>
+{% endblock %}

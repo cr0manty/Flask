@@ -3,11 +3,6 @@
   margin: 0 auto;
 }
 
-body {
-    background: #222528;
-    color: #fff;
-}
-
 .page-item.active .page-link {
     background-color: #cc1d10;
     border-color: #cc1d10;
@@ -37,6 +32,6 @@ a:-webkit-any-link {
     color: #ff0000;
 }
 
-.error-field {
+a:not([href]):not([tabindex]) {
     color: #721c24;
 }

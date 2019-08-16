@@ -17,7 +17,10 @@
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
             crossorigin="anonymous"></script>
 </head>
-<body>
+<body style="
+            background: #222528;
+            color: #fff;
+            ">
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="{{ url_for('index') }}">Cr0manty</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -38,6 +41,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url_for('posts.create_post')}}">Новый пост</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for('map')}}">Карта</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{url_for('links')}}">Ссылки</a>
