@@ -7,6 +7,6 @@ WTForms==2.2.1
 Flask-Admin==1.5.3
 mysql-connector==2.1.7
 mysql-connector-python==8.0.17
-requests==2.7.0
+requests==2.20.0
 bs4==0.0.1
 folium==0.10.0
