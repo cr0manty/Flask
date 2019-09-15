@@ -5,3 +5,4 @@ class Configuration(object):
     SECRET_KEY = 'my secret code is pisun'
     SECURITY_PASSWORD_SALT = 'salt-key'
     SECURITY_PASSWORD_HASH = 'pbkdf2_sha512'
+    SECURITY_TOKEN_AUTHENTICATION_KEY = 'mysequrecode'

@@ -12,7 +12,8 @@
 <div class="container col-md-offset-3 col-md-6">
 
     <form action="" method="POST" name="login_user_form">
-         <p>
+        {{ form.hidden_tag() }}
+        <p>
             {{ form.name.label }}<br>
             {{ form.name(size=64, class='form-control') }}<br>
             {% for error in form.name.errors %}

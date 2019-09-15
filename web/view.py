@@ -4,12 +4,10 @@ from flask_security import login_required, current_user, logout_user, login_user
 from web.sequrity import Registration, User
 from web.sequrity import Login
 from flask.testing import url_parse
-from web.location import make_map
 
 
 @app.route('/')
 def index():
-    make_map()
     return render_template('index.html',
                            username=(current_user.name if current_user.is_authenticated
                                      else None))
@@ -25,19 +23,14 @@ def links():
     return render_template('links.html')
 
 
-@app.route('/map')
-def map():
-    return render_template('map.html')
-
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = Login()
     if form.validate_on_submit():
-        user = User.query.filter_by(name=form.username.data).first()
+        user = User.query.filter_by(name=form.name.data).first()
         if user is None or not user.check_password(form.password.data):
             return redirect(url_for('login'))
-        login_user(user, remember=form.remember_me.data)
+        login_user(user)
         next_page = request.args.get('next')
         if not next_page or url_parse(next_page).netloc != '':
             next_page = url_for('index')

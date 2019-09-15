@@ -4,10 +4,10 @@ from web.sequrity import *
 from flask_admin import Admin,  expose
 
 
-admin = Admin(app, 'Cr0manty', url='/', index_view=HomeAdminView(name='Home'))
-admin.add_view(PostAdminView(Post, db.session, url='/admin/post'))
-admin.add_view(TagAdminView(Tag, db.session, url='/admin/tags'))
-admin.add_view(UsersAdminView(User, db.session, url='/admin/users'))
+admin = Admin(app, 'Cr0manty', url='/', index_view=Admin(name='Home'))
+admin.add_view(Admin(Post, db.session, url='/admin/post'))
+admin.add_view(Admin(Tag, db.session, url='/admin/tags'))
+admin.add_view(Admin(User, db.session, url='/admin/users'))
 
 
 @expose('/')
